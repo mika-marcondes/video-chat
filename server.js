@@ -19,6 +19,10 @@ io.on("Connection", (Socket) => {
       Socket.to(otherUser).emit("User joined", Socket.id);
     }
   });
+
+  Socket.on("Offer", (payload) => {
+    io.to(payload.target).emit("Offer", payload);
+  });
 });
 
 server.listen(8000, () => console.log("Server is running on port 8000"));
