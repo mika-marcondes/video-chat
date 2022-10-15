@@ -23,6 +23,10 @@ io.on("Connection", (Socket) => {
   Socket.on("Offer", (payload) => {
     io.to(payload.target).emit("Offer", payload);
   });
+
+  Socket.on("Answer", (payload) => {
+    io.to(payload.target).emit("Answer", payload);
+  });
 });
 
 server.listen(8000, () => console.log("Server is running on port 8000"));
